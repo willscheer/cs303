@@ -1,0 +1,40 @@
+/* Write a program that compares the values of y1 and y2 in the following
+   for values of n up to 100 in increments of 10. Does the result surprise you?
+        y1 = 100 * n + 10
+        y2 = 5 * n * n + 2   */
+#include <iostream>
+using namespace std; 
+
+// Plugs n into y1 and y2 equations, calculates, and prints results
+// Runs until n > 100
+void calculate(int n) {
+
+	// Exit condition
+	if (n <= 100) {
+		// Equations
+		int y1 = 100 * n + 10;
+		int y2 = 5 * n * n + 2;
+
+		// Printing results
+		cout << "y1 = " << y1 << "   y2 = " << y2 << endl;
+
+		// Prevents jumping to 11 if n = 1
+		if (n == 1) {
+			calculate(10);
+		}
+		// Increment n by 10
+		else {
+			calculate(n + 10);
+		}
+	}
+}
+
+
+
+int main() {
+	
+	// Initializes at n =  1
+	calculate(1);
+
+	return 0;
+}
