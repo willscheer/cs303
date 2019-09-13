@@ -1,0 +1,69 @@
+#include <string>
+using namespace std;
+
+struct Node {
+	string data;
+	Node* next;
+};
+
+
+void main() {
+	
+	// Created "Tom" node and head pointer
+	Node* node_ptr = new Node;
+	Node* head = node_ptr;
+	node_ptr->data = "Tom";
+	node_ptr->next = new Node;
+	node_ptr = node_ptr->next;
+
+	// Created "John" node
+	node_ptr->data = "John";
+	node_ptr->next = new Node;
+	node_ptr = node_ptr->next;
+
+	// Created "Harry" node
+	node_ptr->data = "Harry";
+	node_ptr->next = new Node;
+	node_ptr = node_ptr->next;
+
+	// Created "Sam" node and tail pointer
+	Node* tail = node_ptr;
+	node_ptr->data = "Sam";
+	node_ptr->next = tail;
+
+
+	// a) Insert "Bill" before "Tom" (You have a reference to the head "Tom".
+
+	Node* node_ptr = new Node;  // new node created
+	node_ptr->data = "Bill";    // assigned data "Bill" to new node
+	node_ptr->next = head;      // next pointer assigned to head node ("Tom")
+	head = node_ptr;			// head pointer reassigned to "Bill"
+
+
+	// b) Insert "Sue" before "Sam" (You only have a reference to "Sam" and the head).
+
+	Node* node_ptr = new Node;          // new node created
+	node_ptr->data = "Sue";				// assigned data "Sue" to new node
+
+	Node* iterator = head;				// iterator pointing to head created
+	while (iterator->next != tail)		// iterates through list until node before tail node is reached ("Harry")
+		iterator = iterator->next;
+
+	iterator->next = node_ptr;			// "Harry" node next pointer assigned to "Sue" node
+	node_ptr->next = tail;				// "Sue" node next pointer assigned to tail node ("Sam")
+
+
+	// c) Remove "Bill".
+
+	head = head->next;		// head pointer assigned to node after original head node ("Tom")
+
+	
+	// d) Remove Sam (You only have reference to the head and Sam).
+
+	Node* iterator = head;				// iterator pointing to head created
+	while (iterator->next != tail)		// iterates through list until node before tail node is reached ("Sue")
+		iterator = iterator->next;
+
+	iterator->next = nullptr;			// "Sue" node next pointer assigned to null
+	tail = iterator;					// tail pointer reassigned to "Sue"
+}
