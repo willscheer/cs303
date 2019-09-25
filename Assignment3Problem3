@@ -1,3 +1,6 @@
+// 3) Write a function that reads a line and reverses the words in
+the line (not the characters) using a stack.
+
 #include <iostream>
 #include <string>
 #include <stack>
