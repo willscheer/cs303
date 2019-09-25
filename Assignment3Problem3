@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <stack>
+#include <vector>
+#include <sstream>
+using namespace std;
+
+// Reverses a string of words
+// @param the original string
+// @return reverse string
+string reverseLine(string line) {
+	stack<string, vector<string>> stack;    // stack to hold words
+
+	istringstream in(line);
+	string next_word;
+
+	while (in >> next_word) {       // adding each word in string to the stack
+		stack.push(next_word);
+	}
+
+
+// Pulls top string from stack and appends to result string
+	string result = "";
+	while (!stack.empty()) {
+		string add = stack.top();
+		result += add;
+		result += " ";
+		stack.pop();
+	}
+
+	return result;
+}
+
+
+int main() {
+	string reverseLine(string);
+
+	cout << reverseLine("The quick brown fox jumps over the lazy dog.");
+
+	return 0;
+}
