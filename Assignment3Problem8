@@ -1,0 +1,47 @@
+/* 8) Write a new queue function called move Programming: _to_rear that
+moves the element currently at the front of the queue to the rear of the queue. The
+element that was second in line will be the new front element. Do this using
+functions push, front, and pop. */
+
+#include <queue>
+#include <iostream>
+using namespace std;
+
+// Sends front of queue to back
+// @ param reference to queue (normally function would just be a class method)
+// @returns nothing but alters original queue
+template <class DataType>
+void move_to_rear(queue<DataType>& my_queue){
+	my_queue.push(my_queue.front());				// adds front of queue value to end of queue
+	my_queue.pop();									// deletes value from front of queue
+}
+
+// prints queue in order
+// @param queue to be printed
+void print(queue<int> q) {
+	while (!q.empty()) {
+		int next = q.front();
+		cout << next << endl;
+		q.pop();
+	}
+}
+
+int main() {
+
+	queue<int> q;
+
+	for (int i = 1; i <= 10; i++) {					// filling queue with ints 1-10
+		q.push(i);
+	}
+
+	cout << "Before:\n";			//	Prints original queue
+	print(q);
+	cout << endl;
+	
+	move_to_rear(q);				// Moves front value to back
+
+	cout << "After:\n";
+	print(q);						// Prints new queue
+
+	return 0;
+}
