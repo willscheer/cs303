@@ -1,0 +1,18 @@
+#include <string>
+
+
+int to_number(string n, int i = 0) {
+
+	if (i == n.size()) {			// exit condition: reached end of string
+		return 0;
+	}
+
+	if (!isdigit(n[i]))						// adds 0 if index is not a digit
+		return 0 + to_number(n, ++i);
+
+	else {
+		int val = n[i] - '0';				// conversion of char to int
+
+		return val + to_number(n, ++i);		// if digit, adds to value into return sequence
+	}
+}
