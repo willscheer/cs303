@@ -1,0 +1,28 @@
+// Modify insertion sort for a list
+#include <list>
+using namespace std;
+
+void insertion_sort(list <int>& num) {
+	int i, j, key;
+	bool insertionNeeded = false;
+	list<int>::iterator j_it;
+	list<int>::iterator i_it;
+
+	for (j_it = ++num.begin(); j_it != num.end(); ++j_it) {
+		key = *j_it;
+		insertionNeeded = false;
+
+		for (i_it = num.begin(); i_it != --num.begin(); --i_it) { // larger values move right
+			if (key < *i_it) {
+				++* i_it = -- * i_it;
+				insertionNeeded = true;
+			}
+
+			else
+				break;
+		}
+
+		if (insertionNeeded)
+		++*i_it = key;    //Put key into its proper location
+	}
+}
