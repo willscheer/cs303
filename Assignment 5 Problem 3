@@ -1,0 +1,9 @@
+// Returns sum of all nodes in the tree
+int sum_of_nodes(Node* root) {
+	
+	if (root == nullptr) {
+		return 0;
+	}
+
+	return (root->data + sum_of_nodes(root->left) + sum_of_nodes(root->right));
+}
