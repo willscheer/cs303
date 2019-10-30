@@ -1,0 +1,23 @@
+// Tests if a binary tree is a binary search tree
+
+bool BST_TEST(Node* root) {
+
+	if (root == nullptr) {
+		return true;
+	}
+
+	else if (root->left) {
+		if (root->left->data > root->data)
+			return false;
+	}
+
+	else if (root->right) {
+		if (root->right->data < root->data)
+			return false;
+	}
+
+	BST_TEST(root->left);
+	BST_TEST(root->right);
+
+	return true;
+}
