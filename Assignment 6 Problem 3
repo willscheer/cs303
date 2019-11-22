@@ -1,0 +1,58 @@
+#include <iostream>
+#include <queue>
+#include <random>
+#include <ctime>
+using namespace std;
+
+
+class Person {
+
+public:
+	int dependents = 0;
+
+	Person(int dependents) {
+		this->dependents = dependents;
+	}
+};
+
+
+struct compare {
+
+	bool operator() (const Person& in_queue, const Person& adding) {
+
+		int dependents_in_queue = in_queue.dependents;
+		int dependents_adding = adding.dependents;
+
+		return dependents_in_queue < dependents_adding;
+
+	}
+};
+
+
+int main() {
+
+	priority_queue<Person, vector<Person>, compare> pq;
+
+
+// Adding objects to priority queue
+	srand(time(NULL));
+	for (int i = 0; i < 10; i++) {
+		int random_num = rand() % 21;		// Creates random number in range 0-20 for dependents
+		pq.push(Person(random_num));
+	}
+
+
+// Prints out descending priority queue
+	cout << "[";
+	while (!pq.empty()) {
+		cout << pq.top().dependents;
+		pq.pop();
+	
+		if (!pq.empty())
+			cout << ", ";
+	}
+	cout << "]";
+
+
+	return 0;
+}
