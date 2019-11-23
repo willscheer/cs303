@@ -1,0 +1,41 @@
+#include "Huffman_Tree.h"
+#include <iostream>
+
+
+int main() {
+
+	// Nursery Rhyme is "Hickory Dickory Dock"
+
+	Huff_Data<char> space(15, ' ');
+	Huff_Data<char> o(12, 'o');
+	Huff_Data<char> c(11, 'c');
+	Huff_Data<char> k(9, 'k');
+	Huff_Data<char> r(7, 'r');
+	Huff_Data<char> e(7, 'e');
+	Huff_Data<char> d(5, 'd');
+	Huff_Data<char> t(5, 't');
+	Huff_Data<char> i(4, 'i');
+	Huff_Data<char> y(4, 'y');
+	Huff_Data<char> h(4, 'h');
+	Huff_Data<char> u(4, 'u');
+	Huff_Data<char> n(4, 'n');
+	Huff_Data<char> s(3, 's');
+	Huff_Data<char> m(2, 'm');
+	Huff_Data<char> a(2, 'a');
+	Huff_Data<char> l(2, 'l');
+	Huff_Data<char> p(1, 'p');
+	Huff_Data<char> w(1, 'w');
+
+
+	std::ostringstream code;
+	std::vector<Huff_Data<char>> huff_Data{ space,s, o, c, k, r, e, d, t, i, y, h, u, n, s, m, a, l, p, w };
+	Huffman_Tree<char> huff_tree;
+	huff_tree.build_tree(huff_Data);
+	huff_tree.print_code(code);
+	std::string result = code.str();
+	std::cout << result;
+
+	//result = huff_tree.decode("010");
+
+	return 0;
+}
